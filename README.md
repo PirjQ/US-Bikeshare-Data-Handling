@@ -39,3 +39,8 @@ counts of each user type
 counts of each gender (only available for NYC and Chicago)
 
 earliest, most recent, most common year of birth (only available for NYC and Chicago)
+
+Reference Used For this Project :
+
+-https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_all.pdf
+-https://stackoverflow.com/questions/1801668/convert-a-python-list-with-strings-all-to-lowercase-or-uppercase
