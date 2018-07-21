@@ -18,21 +18,21 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
+    print('Hello! Bicycling Is Good For Health!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city = input('Explore for major cities like Chicago, New York City, Washington.Type in your choice\n')
-    city = city.lower()
-    while city not in ['chicago', 'new york', 'washington']:
+    cities = ['chicago','new york city','washington']
+    while True:
         city = input('\nLet\'s explore rich data of some major US Bikeshare database analysis!\n'
                      'Explore for major cities like Chicago, New York City, Washington.\n')
-        if city == 'chicago':
-            return 'chicago.csv'
+        city = city.lower()
+        if city == 'newyork':
+            city = 'new york city'     
         elif city == 'new york':
-            return 'new_york_city.csv'
-        elif city == 'new york city':
-            return 'new_york_city.csv'
-        elif city == 'washington':
-            return 'washington.csv'
+            city = 'new york city'
+            
+        if city in cities:
+            print('Loading for city {}.'.format(city))
+            break    
         else:
             print('Couldn\'t find the required data. Please Try Again With Appropriate Name!')
                         
@@ -94,12 +94,12 @@ def time_stats(df):
     # TO DO: display the most common month
     df['Start Time']=pd.to_datetime(df['Start Time'])
     df['month']=df['Start Time'].dt.month
-    common_month=months[df['month'].mode()[0]-1]
+    common_month=df['month'].mode()[0]
     print('Most common month is {}.'.format(common_month))
     
     # TO DO: display the most common day of week
     df['weekday']=df['Start Time'].dt.weekday
-    common_day = days[df['weekday'].mode()[0]]
+    common_day = df['weekday'].mode()[0]
     print('Most common day is {}.'.format(common_day))
 
     # TO DO: display the most common start hour
@@ -174,8 +174,8 @@ def user_stats(city, df):
         start_time = time.time()
         common_birth = int(df['Birth Year'].mode()[0])
         print('\nMost common birth year is {}'.format(common_birth))
-        oldest_birth = int(df['Birth year'].min())
-        print('\nOldest birth year among d is {}'.format(oldest_birth))
+        oldest_birth = int(df['Birth Year'].min())
+        print('\nOldest birth year among users data is {}'.format(oldest_birth))
         youngest_birth = int(df['Birth Year'].max())
         print('\nThe youngest birth year is {}'.format(youngest_birth))
 
